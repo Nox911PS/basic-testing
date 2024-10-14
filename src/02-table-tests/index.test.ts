@@ -1,17 +1,45 @@
-// Uncomment the code below and write your tests
-/* import {  simpleCalculator, Action } from './index';
+import { simpleCalculator, Action } from './index';
 
 const testCases = [
-    { a: 1, b: 2, action: Action.Add, expected: 3 },
-    { a: 2, b: 2, action: Action.Add, expected: 4 },
-    { a: 3, b: 2, action: Action.Add, expected: 5 },
-    // continue cases for other actions    
-]; */
+  {
+    input: { a: 4, b: 2, action: Action.Add },
+    expected: 6,
+    testName: 'add two numbers',
+  },
+  {
+    input: { a: 4, b: 2, action: Action.Subtract },
+    expected: 2,
+    testName: 'subtract two numbers',
+  },
+  {
+    input: { a: 4, b: 2, action: Action.Multiply },
+    expected: 8,
+    testName: 'multiply two numbers',
+  },
+  {
+    input: { a: 4, b: 2, action: Action.Divide },
+    expected: 2,
+    testName: 'divide two numbers',
+  },
+  {
+    input: { a: 4, b: 2, action: Action.Exponentiate },
+    expected: 16,
+    testName: 'exponential two numbers',
+  },
+  {
+    input: { a: 4, b: 2, action: 'unknown' },
+    expected: null,
+    testName: 'return null if action invalid',
+  },
+  {
+    input: { a: 4, b: 'unknown', action: Action.Exponentiate },
+    expected: null,
+    testName: 'return null if value invalid',
+  },
+];
 
 describe('simpleCalculator', () => {
-  // This test case is just to run this test suite, remove it when you write your own tests
-  test('should blah-blah', () => {
-    expect(true).toBe(true);
+  it.each(testCases)('should $testName', ({ input, expected }) => {
+    expect(simpleCalculator(input)).toEqual(expected);
   });
-  // Consider to use Jest table tests API to test all cases above
 });
